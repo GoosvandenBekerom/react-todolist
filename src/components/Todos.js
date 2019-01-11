@@ -9,7 +9,7 @@ class Todos extends React.Component {
         return (
             <ul className="list-group">
                 {
-                    todos.map(todo => <TodoItem key={todo.id} todo={todo} toggle={this.props.toggle}></TodoItem>)
+                    todos.map(todo => <TodoItem key={todo.id} todo={todo} toggle={this.props.toggle} delete={this.props.delete}></TodoItem>)
                 }
             </ul>
         );
