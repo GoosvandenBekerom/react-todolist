@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './components/layout/Header';
 import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
 
 class App extends Component {
   state = {
@@ -46,7 +48,11 @@ class App extends Component {
     const { todos } = this.state;
     return (
       <div className="App">
-        <Todos todos={todos} toggle={this.toggle} delete={this.delete} />
+        <div className="container">
+          <Header />
+          <AddTodo />
+          <Todos todos={todos} toggle={this.toggle} delete={this.delete} />
+        </div>
       </div>
     );
   }
