@@ -1,25 +1,39 @@
 import React from 'react';
 
-const formStyle = {
-    display: 'flex',
-    margin: '10px 0'
-}
+class AddTodo extends React.Component {
+  state = {
+    title: ''
+  }
 
-const AddTodo = () => (
-    <form style={formStyle}>
-        <input
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.addTodo(this.state.title);
+    this.setState({ title: '' });
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.onSubmit}>
+        <div className="input-group mb-3">
+
+          <input 
             type="text"
             name="title"
+            className="form-control"
             placeholder="Add new todo..."
-            style={{ flex: 10 }}
-        />
-        <input
-            type="submit"
-            value="Submit"
-            className="btn btn-primary"
-            style={{ flex: 1 }}
-        />
-    </form>
-)
+            value={this.state.title}
+            onChange={this.onChange}
+            />
+
+          <div className="input-group-append">
+            <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+          </div>
+
+        </div>
+      </form>
+    )
+  }
+}
 
 export default AddTodo;

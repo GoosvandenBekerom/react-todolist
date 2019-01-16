@@ -4,7 +4,8 @@ const headerStyle = {
     background: '#333',
     color: '#fff',
     textAlign: 'center',
-    padding: '10px'
+    padding: '10px',
+    marginBottom: '15px'
 }
 
 const Header = () => (
