@@ -1,5 +1,7 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addTodo } from '../../store/actions/TodoActions';
 
 class AddTodo extends React.Component {
   state = {
@@ -28,7 +30,12 @@ class AddTodo extends React.Component {
             />
 
           <div className="input-group-append">
-            <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+            <button 
+              className="btn btn-outline-secondary"
+              type="submit" 
+              id="button-addon2">
+              Submit
+            </button>
           </div>
 
         </div>
@@ -38,7 +45,7 @@ class AddTodo extends React.Component {
 }
 
 AddTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired
 }
 
-export default AddTodo;
+export default connect(null, { addTodo })(AddTodo);
