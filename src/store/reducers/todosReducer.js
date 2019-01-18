@@ -7,14 +7,14 @@ const initialState = {
 const todosReducer = (state = initialState, action) => {
   console.log('reducer', action)
 
-  switch(action.type) {
+  switch (action.type) {
 
     case FETCH_TODOS:
       return {
         ...state,
         items: action.payload
       }
-    
+
     case NEW_TODO:
       state.items.unshift(action.payload)
       return {
@@ -26,11 +26,14 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         items: [
-          ...state.items.filter(todo => {
-            if (todo.id === action.payload) {
-              todo.completed = !todo.completed;
+          ...state.items.map(todo => {
+            if (todo.id !== action.payload) {
+              return todo;
             }
-            return todo;
+            return {
+              ...todo,
+              completed: !todo.completed
+            }
           })
         ]
       }
@@ -44,7 +47,7 @@ const todosReducer = (state = initialState, action) => {
     default:
       return state;
   }
-  
+
 }
 
 export default todosReducer;
